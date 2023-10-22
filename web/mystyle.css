@@ -1,0 +1,39 @@
+a {
+    color:black;
+
+}
+
+h1{
+    font-size: 45px; text-align: center;
+    border-bottom:1px gray solid;
+
+
+    padding: 10px;
+    margin:0px;
+    padding:20px;
+}
+
+ol {
+    border-right:1px gray solid;
+    width: 100px;
+    margin: 0px;
+    padding : 20px;
+
+}
+
+#grid {
+    display:grid;
+    grid-template-columns: 150px 1fr;
+}
+p{text-align: justify;}
+
+.saw{color:gray;}
+
+.active{color:red;}
+
+/*화면 크기가 800px보다 작다면*/
+@media(max-width:800px){
+    #grid {display: block;}
+    #grid ol{border-right: none;}
+    h1 {border-bottom: none;}
+}
