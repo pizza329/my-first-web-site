@@ -1,0 +1,254 @@
+*h1
+    1.html
+        <link rel="stylesheet" href="mystyle.css">
+        <script src="master.js"></script>
+
+        <title> : 사이트 이름
+
+        <ol>,<ul> : 목록 만들기
+        <strong> : 해당 내용만 진하게
+        <u> : 밑줄
+        <br> : 줄바꿈
+        <p> : 문단
+        <img src=""> : 이미지 넣기
+        <li> -> <ul> : 리스트
+        <span> : 특정 영역 지정
+        <div>: 구역을 나눔
+
+
+        *margin-top : 위쪽 여백
+            #<p style="margin-top:40px">
+
+        *href : 하이퍼링크
+            #<a href="링크" title="html link">
+
+
+        *글자색
+        <font color="">
+        <style> a {color:red; text-decoration: none;}
+
+        *글자 크기
+        font-size:
+
+        *class < id
+        <link rel="stylesheet" href="mystyle.css">
+
+        ##########box###########
+
+        *border-(): 박스
+        padding: 간격
+        margin: 여백
+
+        *grid
+        먼저 밖 div에 <div id="grid">를 지정
+        #grid {
+            display:grid;
+            grid-template-columns: 150px 1fr;
+        }
+
+        *모바일 버전
+        @media(max-width:800px){
+            #grid {display: block;}
+            #grid ol{border-right: none;}
+            h1 {border-bottom: none;}
+        }
+
+        -----------------------------
+    2.javascript
+        document.write() :출력
+        toupperCase()
+        toLowerCase()
+        includes()
+        replace(,)
+        replaceAll(,)
+        return
+
+        function second(num){
+                document.write('<li>'+num+'-1</li>');
+                document.write('<li>'+num+'-2</li>');
+            }
+        second(2);
+        second(3);
+
+        function second(printNum, loopNum){
+                for (var i=1; i<=loopNum; i=i+1){
+                    document.write('<li>'+printNum+'-'+i+'</li>');
+                }
+            }
+    3. Day_night
+        *버튼두개
+        <input type="button" value="day" onclick="
+            document.querySelector('body').style.backgroundColor='white';
+            document.querySelector('body').style.color='black';
+
+        ##document.querySelector('#night_day')는 this로 치환o
+        if(document.querySelector('#night_day').value=='night'){
+            document.querySelector('body').style.backgroundColor='black';
+            document.querySelector('body').style.color='white';  
+            document.querySelector('#night_day').value='day';
+        else }
+
+        -----
+        *버튼한개
+        <input id="night_day" type="button" value="night" onclick="
+            var target=document.querySelector('body');
+
+            if(this.value=='night'){
+                target.style.backgroundColor='black';
+                target.style.color='white';
+                this.value='day';
+
+                var alist=document.querySelectorAll('a');
+                var i=0
+                while(i<alist.length){
+                    alist[i].style.color='powderblue';
+                    i=i+1;
+                }
+
+            } else{
+                target.style.backgroundColor='white';
+                target.style.color='black';
+                this.value='night';
+
+                var alist=document.querySelectorAll('a');
+                var i=0
+                while(i<alist.length){
+                    alist[i].style.color='blue';
+                    i=i+1;
+                }
+            }
+            ">
+
+        *master.js에서
+        function SetColor (color);{
+        var alist=document.querySelectorAll('a');
+            var i=0;
+            while (i<alist.length){
+                alist[i].style.color=color;
+                i=i+1;}
+        }
+
+        function linksSetColor(color){
+            var alist=document.querySelectorAll('a');
+            var i=0;
+            while(i<alist.length){
+                alist[i].style.color=color;
+                i=i+1}
+        }
+
+        function bodySetColor(color){
+            document.querySelector('body').style.color=color;
+        }
+
+        function bodyBgSetColor(color){
+            document.querySelector('body').style.backgroundColor=color;
+        }
+
+        function nightDayHandler(self){
+            var target=document.querySelector('body');
+
+            if(self.value=='night'){
+                bodyBgSetColor('black');
+                bodySetColor('white');
+                self.value='day';
+                setColor('powderblue');
+
+            }else
+            {   bodyBgSetColor('white');
+                bodySetColor('black');
+                self.value='night';
+                setColor('blue');
+                }
+            }
+    4.const
+        const 리스트명=[,,]
+        document.write(리스트명[0]);
+    5.object
+        key : value
+        object['key']
+        method : function() {} - {}를 이용하는 것 : 리터럴 방식
+
+        *master.js에서 객체
+        
+        var Body={
+            setColor:function(color){
+                document.querySelector('body').style.color=color;
+            },
+            setBackgroundColor: function(color){
+                document.querySelector('body').style.backgroundColor=color;
+            }
+        }
+
+        var Links={
+            setColor:function(color){
+                var alist=document.querySelector('a');
+                var i=0;
+                while(i<alist.length){
+                    alist[i].style.color=color;
+                    i=i+1
+                }
+            }
+        }
+
+
+        function nightDayHandler(self){
+            if(self.value=='night'){
+                Body.setBackgroundColor('black');
+                Body.setColor('white');
+                Links.setColor('powderblue');
+                self.value='day';
+            }
+            else{
+                Body.setBackgroundColor('white');
+                Body.setColor('black');
+                Links.setColor('blue');
+                self.value='night';
+            }
+        }
+    6.object.html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <body>
+            <script>
+                var player={
+                    number:"7",
+                    position:"mf",
+                    name:"son-heung-min",
+                    club:"hotspur"
+                }
+                for(var key in player){
+                    console.log(player[key]);
+                }
+            </script>
+        </body>
+        </head>
+        </html>
+        출력:player.showAll() 
+    7.jQuery
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        $('a').css('color', color);
+        $('body').css('color', color);
+        // document.querySelector('body').style.color=color;  
+        $('body').css('background-color', color);
+        // document.querySelector('body').style.backgroundColor=color;
+    8.function
+        <!DOCTYPE html>
+        <html>
+        <head>
+        </head>
+        <body>
+            <script>
+                function second(printNum, loopNum){
+                    for (var i=1; i<=loopNum; i=i+1){
+                        document.write('<li>'+printNum+'-'+i+'</li>');
+                    }
+                }
+                document.write('<li>1</li>');
+                document.write('<li>2</li>');
+                second(2,2);
+                document.write('<li>3</li>');
+                second(3,3);
+            </script>
+        </body>
+        </html>        
